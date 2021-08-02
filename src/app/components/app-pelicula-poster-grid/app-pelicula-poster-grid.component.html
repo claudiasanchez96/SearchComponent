@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="col-md-3 mb-5" *ngFor="let movie of movies">
+        <img [src]="movie.poster_path | poster" class="img-fluid poster">
+        <div class="container px-2">
+            <h3>{{movie.original_title}}</h3>
+            <div class="d-flex align-items-center">
+                <div class="col-md-6">
+                    <div class="pt-1">
+                        ****
+                    </div>
+                </div>
+                <div class="col-md-6">{{movie.vote_average |number:'1.1-2'}}</div>
+            </div>
+        </div>
+    </div>
