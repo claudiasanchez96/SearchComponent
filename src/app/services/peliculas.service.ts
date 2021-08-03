@@ -31,7 +31,7 @@ export class PeliculasService {
   getCartelera(): Observable<Movie[]> {
     if (this.cargando) {
       /*cargando peliculas*/
-      return of([]) ;
+      return of([]);
     }
     this.cargando = true;
 
@@ -43,6 +43,20 @@ export class PeliculasService {
         this.carteleraPage += 1;
         this.cargando = false;
       })
+    );
+
+  }
+
+
+  searchMovies(texto: string): Observable<Movie[]> {
+
+    const params = { ...this.params, pages: '1', query: texto };
+    return this.http.get<CarteleraResponse>(`${this.baseUrl}/search/movie`, {
+      params
+    }).pipe(
+      map(resp => resp.results),
+
+
     );
 
   }
